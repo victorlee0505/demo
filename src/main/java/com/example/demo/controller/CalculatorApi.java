@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.Calculator;
+import com.example.demo.service.CalculatorService;
 
 @RequestMapping("/api/cal")
 @RestController
 public class CalculatorApi {
+
+    @Autowired
+    private CalculatorService calculator;
     
     /**
      * POST cal as JSON
@@ -63,7 +68,7 @@ public class CalculatorApi {
 
         }
 
-        Calculator calculator = new Calculator();
+        // Calculator calculator = new Calculator();
 
         double leftNumber = calculator.parsetring2Double4LeftNumber(leftOperand);
         double rightNumber = calculator.parsetring2Double4rightNumber(rightOperand);
