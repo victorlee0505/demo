@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class StringDemo {
     
     /**
@@ -34,11 +36,16 @@ public class StringDemo {
         return false;
     }
 
-    
-
     public static void main(String[] args) {
         String text = "abcdefg";
         char search = 'c';
         System.out.println(StringDemo.contain(text, search));
+
+        String srch = "C";
+        System.out.println(StringUtils.containsIgnoreCase(text, srch));
+
+        String srch2 = "Cde";
+        System.out.println(StringUtils.containsIgnoreCase(text, srch2));
+
     }
 }
