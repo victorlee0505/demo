@@ -25,7 +25,20 @@ public class StringDemo {
      * @since 3.0 Changed signature from contains(String, String) to contains(CharSequence, CharSequence)
      */
     public static boolean contain(String text, char search) {
+        for (int i = 0; i < text.length(); i++) {
+            char letter = text.charAt(i);
+            if(letter == search){
+                return true;
+            }
+        }
         return false;
     }
 
+    
+
+    public static void main(String[] args) {
+        String text = "abcdefg";
+        char search = 'c';
+        System.out.println(StringDemo.contain(text, search));
+    }
 }
