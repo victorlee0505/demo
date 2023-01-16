@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.ApiRequest;
 import com.example.demo.model.ApiResponse;
 
 @RestController
@@ -71,6 +72,26 @@ public class DemoApi {
         String statusCode = "200";
         System.out.println("name : " + name);
         String message = "Hello World from " + name;
+        
+        ApiResponse response = ApiResponse.builder().service(service).status(status).statusCode(statusCode).message(message).build();
+
+        System.out.println("/api/greeting/get Finished");
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Default greeting as JSON
+     * http://localhost:8080/api/greeting/post2
+     * @return
+     */
+    @PostMapping(value = { "/greeting/post2" }, produces = "application/json")
+    public ResponseEntity<ApiResponse> postGreeting2(@RequestBody ApiRequest request) {
+        System.out.println("/api/greeting/post2 Started");
+
+        String service = "/api/greeting/post";
+        String status = "Sucess";
+        String statusCode = "200";
+        String message = request.getMessage() + request.getName();
         
         ApiResponse response = ApiResponse.builder().service(service).status(status).statusCode(statusCode).message(message).build();
 
